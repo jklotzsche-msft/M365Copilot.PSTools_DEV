@@ -65,11 +65,10 @@
         # Admin Setting Commands
         'Get-M365CopilotCommand', # list relevant commands for Microsoft 365 Copilot (original command + additional property to show, if the related module is installed)
         'Get-M365CopilotHelp', # get help for relevant commands for Microsoft 365 Copilot (original help + additional property for description, how the command is relevant for Microsoft 365 Copilot)
-        'New-M365CopilotPSToolsIssue', # create a new issue on GitHub for a command for Microsoft 365 Copilot. This can be used to report news about a command or suggest a new command for the next version of the M365Copilot.PSTools module.
-        'Get-M365CopilotModule', # list relevant modules for Microsoft 365 Copilot (original module + additional property to show, if the module is installed)
-        'Install-M365CopilotModule', # install all modules for Microsoft 365 Copilot
-        'Uninstall-M365CopilotModule', # uninstall all modules for Microsoft 365 Copilot
-        'Update-M365CopilotModule' # update all modules for Microsoft 365 Copilot
+
+        'Get-M365CopilotDependencies', # list relevant modules for Microsoft 365 Copilot (original module + additional property to show, if the module is installed)
+        'Uninstall-M365CopilotDependencies', # uninstall all modules for Microsoft 365 Copilot
+        'Update-M365CopilotDependencies' # update all modules for Microsoft 365 Copilot
         
         # Copilot Activity API Commands
 
