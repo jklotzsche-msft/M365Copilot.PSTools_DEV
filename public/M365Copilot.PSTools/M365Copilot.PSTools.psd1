@@ -13,13 +13,13 @@
     GUID              = '501ed559-7410-4b87-99ed-1dbdaec21cba'
 
     # Author of this module
-    Author            = 'jklotzsche'
+    Author            = 'Jamy Klotzsche'
 
     # Company or vendor of this module
     CompanyName       = ''
 
     # Copyright statement for this module
-    Copyright         = '(c) jklotzsche. All rights reserved.'
+    Copyright         = '(c) Jamy Klotzsche. All rights reserved.'
 
     # Description of the functionality provided by this module
     Description       = 'M365Copilot.PSTools is a PowerShell module that simplifies and enhances the administration of Microsoft 365 Copilot. It provides tools to streamline tasks, making it easier for administrators and developers to manage and optimize your Microsoft 365 Copilot experience.'
@@ -43,7 +43,16 @@
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    # RequiredModules = @()
+    RequiredModules = @(
+        @{
+            ModuleName      = 'PackageManagement'
+            RequiredVersion = '1.0.0.1'
+        },
+        @{
+            ModuleName      = 'PowerShellGet'
+            RequiredVersion = '1.0.0.1'
+        }
+    )
 
     # Assemblies that must be loaded prior to importing this module
     # RequiredAssemblies = @()
@@ -64,15 +73,13 @@
     FunctionsToExport = @(
         # Admin Setting Commands
         'Get-M365CopilotCommand', # list relevant commands for Microsoft 365 Copilot (original command + additional property to show, if the related module is installed)
-        'Get-M365CopilotHelp', # get help for relevant commands for Microsoft 365 Copilot (original help + additional property for description, how the command is relevant for Microsoft 365 Copilot)
-
-        'Get-M365CopilotDependencies', # list relevant modules for Microsoft 365 Copilot (original module + additional property to show, if the module is installed)
-        'Uninstall-M365CopilotDependencies', # uninstall all modules for Microsoft 365 Copilot
-        'Update-M365CopilotDependencies' # update all modules for Microsoft 365 Copilot
+        'Get-M365CopilotHelp' # get help for relevant commands for Microsoft 365 Copilot (original help + additional property for description, how the command is relevant for Microsoft 365 Copilot)
         
         # Copilot Activity API Commands
 
-        # Extensibility: Graph Connector Commands
+        # M365 Tenant Scan for technical readiness
+
+        # Extensibility: Graph Connector Commands --> Microsoft.Graph.Search has all cmdlets for the Graph Connectors already!
 
         # Extensibility: Declarative Agent Commands
     )

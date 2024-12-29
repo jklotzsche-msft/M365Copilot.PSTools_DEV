@@ -1,4 +1,4 @@
-﻿# Internal > Scripts > AdminSettingCommands
+﻿# Internal > Scripts > Dependencies
 
 Put in .psd1 files, containing information about relevant commands for Microsoft 365 Copilot.
 The file name should be the same as the module name, e.g. 'MicrosoftTeams'.

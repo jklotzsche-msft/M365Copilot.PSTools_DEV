@@ -1,6 +1,6 @@
-﻿# Sources for the AdminSettingCommands .psd1 files
+﻿# Sources for the Dependencies .psd1 files
 
-Create one file per source module, with the same name as the module, but with the extension .psd1. The file should be placed in the /M3665Copilot.PSTools/internal/scripts/AdminSettingCommands folder.
+Create one file per source module, with the same name as the module, but with the extension .psd1. The file should be placed in the /M3665Copilot.PSTools/internal/scripts/Dependencies folder.
 
 The following documentations are used as sources for the files. The goal is to have a full list of all relevant Microsoft 365 PowerShell commands to manage Microsoft 365 Copilot settings.
 
@@ -23,6 +23,6 @@ The following steps should be followed to create the .psd1 files:
 2. Search for the keyword "PowerShell".
 3. Copy the relevant commands.
 4. Paste the commands into the .psd1 file.
-5. Save the file in the /M3665Copilot.PSTools/internal/scripts/AdminSettingCommands folder.
+5. Save the file in the /M3665Copilot.PSTools/internal/scripts/Dependencies folder.
 
 The module will update itself based on the content of the .psd1 files.

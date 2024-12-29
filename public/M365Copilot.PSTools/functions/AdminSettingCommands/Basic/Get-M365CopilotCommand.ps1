@@ -21,12 +21,12 @@
     # Check, if all required modules are installed and imported
     $requiredModules = $Name | ForEach-Object { $script:M365CopilotCommand[$_].ModuleName } | Select-Object -Unique
     $requiredModules | ForEach-Object {
-        if (-not (Get-Module -Name $_ -ListAvailable)) {
+        if ((Get-Module -Name $_ -ListAvailable).count -eq 0) {
             throw "The module '$_' is required for the command(s) '$Name'. Please install the dependencies using 'Update-M365CopilotDependencies' and try again."
         }
 
         # Import the module
-        if (-not (Get-Module -Name $_)) {
+        if ((Get-Module -Name $_).count -eq 0) {
             Import-Module -Name $_ -WarningAction SilentlyContinue
         }
     }
