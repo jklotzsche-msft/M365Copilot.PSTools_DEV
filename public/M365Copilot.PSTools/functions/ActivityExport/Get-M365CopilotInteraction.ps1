@@ -26,8 +26,6 @@
         [string[]]$Property,
 
         [string]$Filter,
-        
-        [int]$Top = 10,
 
         [int]$Skip = 0,
 
@@ -46,7 +44,7 @@
     }
 
     #TODO: The Activity Export API requires application permissions. Therefore, a seperate application registration is needed. Must be added to documentation.
-    $uri = "https://graph.microsoft.com/beta/copilot/users/$UserId/interactionHistory/getAllEnterpriseInteractions?`$top=$Top&`$skip=$Skip"
+    $uri = "https://graph.microsoft.com/beta/copilot/users/$UserId/interactionHistory/getAllEnterpriseInteractions?`$skip=$Skip"
 
     # If Properties have been provided, add them to the uri
     if (-not [string]::IsNullOrEmpty($Properties)) {

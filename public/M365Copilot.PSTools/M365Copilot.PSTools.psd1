@@ -104,7 +104,8 @@
 
         # M365 Tenant Scan for technical readiness
 
-        # Extensibility: Graph Connector Commands --> Microsoft.Graph.Search has all cmdlets for the Graph Connectors already!
+        # Extensibility: Graph Connector Commands
+        ## Microsoft.Graph.Search has all cmdlets for the Graph Connectors already!
 
         # Extensibility: Declarative Agent Commands
     )

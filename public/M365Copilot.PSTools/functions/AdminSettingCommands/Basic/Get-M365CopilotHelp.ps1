@@ -35,7 +35,9 @@
 
         [Parameter(Mandatory = $true, ParameterSetName = 'ModuleName', Position = 0)]
         [ArgumentCompleter({ $M365CopilotModules })]
-        [string]$Module
+        [string]$Module,
+
+        [switch]$ShowWindow
     )
 
     # Check, if the command name contains wildcards
@@ -63,5 +65,10 @@
     }
 
     # Output the help content
+    if ($ShowWindow) {
+        $helpContent | Select-Object -Property Name, Synopsis, M365CopilotRelation, M365CopilotLink | Out-GridView -Title "M365 Copilot Help" -PassThru
+        return
+    }
+
     $helpContent
 }
