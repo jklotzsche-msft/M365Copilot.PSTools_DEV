@@ -1,10 +1,40 @@
 ﻿function Get-M365CopilotCommand {
+    <#
+    .SYNOPSIS
+    Retrieves M365 Copilot command information based on command name or module name.
+
+    .DESCRIPTION
+    The Get-M365CopilotCommand function retrieves information about M365 Copilot commands. 
+    It allows you to filter commands by their name or by the module they belong to. 
+    The function also adds custom properties to the command information based on the script-scoped variable $script:M365CopilotCommand.
+
+    .PARAMETER Name
+    Specifies the name(s) of the command(s) to retrieve. Wildcards are supported. 
+    If not specified, all command names from $script:M365CopilotCommand.Keys are used.
+
+    .PARAMETER Module
+    Specifies the module name to filter the commands. This parameter is mandatory when using the 'ModuleName' parameter set.
+
+    .EXAMPLE
+    Get-M365CopilotCommand
+    Retrieves all M365 Copilot commands.
+
+    .EXAMPLE
+    Get-M365CopilotCommand -Name 'Get-*'
+    Retrieves all M365 Copilot commands that start with 'Get-'.
+
+    .EXAMPLE
+    Get-M365CopilotCommand -Module 'ExchangeOnlineManagement'
+    Retrieves all M365 Copilot commands that belong to the 'ExchangeOnlineManagement' module.
+    #>
     [CmdletBinding(DefaultParameterSetName = 'Name')]
     param (
         [Parameter(ParameterSetName = 'Name', Position = 0)]
-        [string[]]$Name = $script:M365CopilotCommand.Keys,
+        [ArgumentCompleter({ $M365CopilotCommands })]
+        [string[]]$Name = $M365CopilotCommands,
 
         [Parameter(Mandatory = $true, ParameterSetName = 'ModuleName', Position = 0)]
+        [ArgumentCompleter({ $M365CopilotModules })]
         [string]$Module
     )
 
@@ -16,19 +46,6 @@
     # Check, if the module name is specified and get the command name(s) for the specified module
     if ([string]::IsNullOrEmpty($Module) -eq $false) {
         $Name = $script:M365CopilotCommand.Keys | Where-Object { $script:M365CopilotCommand[$_].ModuleName -eq $Module }
-    }
-
-    # Check, if all required modules are installed and imported
-    $requiredModules = $Name | ForEach-Object { $script:M365CopilotCommand[$_].ModuleName } | Select-Object -Unique
-    $requiredModules | ForEach-Object {
-        if ((Get-Module -Name $_ -ListAvailable).count -eq 0) {
-            throw "The module '$_' is required for the command(s) '$Name'. Please install the dependencies using 'Update-M365CopilotDependencies' and try again."
-        }
-
-        # Import the module
-        if ((Get-Module -Name $_).count -eq 0) {
-            Import-Module -Name $_ -WarningAction SilentlyContinue
-        }
     }
 
     # Get the command content for the specified command and add the custom properties

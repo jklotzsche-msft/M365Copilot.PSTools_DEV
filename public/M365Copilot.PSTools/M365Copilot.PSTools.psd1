@@ -43,7 +43,7 @@
     # ProcessorArchitecture = ''
 
     # Modules that must be imported into the global environment prior to importing this module
-    RequiredModules = @(
+    RequiredModules   = @(
         @{
             ModuleName      = 'PackageManagement'
             RequiredVersion = '1.0.0.1'
@@ -51,6 +51,30 @@
         @{
             ModuleName      = 'PowerShellGet'
             RequiredVersion = '1.0.0.1'
+        },
+        @{
+            ModuleName      = 'ExchangeOnlineManagement'
+            RequiredVersion = '3.7.0'
+        },
+        @{
+            ModuleName      = 'Microsoft.Graph.Authentication'
+            RequiredVersion = '2.25.0'
+        },
+        @{
+            ModuleName      = 'Microsoft.Graph.Users'
+            RequiredVersion = '2.25.0'
+        },
+        @{
+            ModuleName      = 'Microsoft.Graph.Search'
+            RequiredVersion = '2.25.0'
+        },
+        @{
+            ModuleName      = 'Microsoft.Online.SharePoint.PowerShell'
+            RequiredVersion = '16.0.25513.12000'
+        },
+        @{
+            ModuleName      = 'MicrosoftTeams'
+            RequiredVersion = '6.7.0'
         }
     )
 
@@ -72,10 +96,11 @@
     # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
     FunctionsToExport = @(
         # Admin Setting Commands
-        'Get-M365CopilotCommand', # list relevant commands for Microsoft 365 Copilot (original command + additional property to show, if the related module is installed)
-        'Get-M365CopilotHelp' # get help for relevant commands for Microsoft 365 Copilot (original help + additional property for description, how the command is relevant for Microsoft 365 Copilot)
-        
+        'Get-M365CopilotCommand', # list relevant commands for Microsoft 365 Copilot
+        'Get-M365CopilotHelp' # get help for relevant commands for Microsoft 365 Copilot
+
         # Copilot Activity API Commands
+        'Get-M365CopilotInteraction' # requests interaction data per user using the preview API
 
         # M365 Tenant Scan for technical readiness
 
